@@ -316,4 +316,225 @@ for (item of myNewArray) {
 
 // CONDITIONALS A.K.A. IF / ELSE STATEMENTS
 
-LUNCH UNTIL 2:00 EST
+let myBoolean = true
+myBoolean = false
+
+// if (something is true) {
+    // do something
+// } else {
+    // do another thing
+// }
+
+// you don't need an else
+if (2 + 3 > 5) {
+    console.log("2 + 3 is greater than 5")
+}
+
+function howHighIsTheNumber() {
+    const whatIsThisNumber = Math.ceil( Math.random() * 100 )
+
+    // if you would like to check multiple things after the first if you can use an if else
+    if (whatIsThisNumber > 90) {
+        console.log("really high number")
+    } else if (whatIsThisNumber > 70) {
+        console.log("pretty high number")
+    } else if (whatIsThisNumber > 50) {
+        console.log("sort of high number")
+    } else if (whatIsThisNumber > 30) {
+        console.log("kind of low number")
+    } else if (whatIsThisNumber > 10) {
+        console.log("pretty low number")
+    } else {
+        console.log("really low number")
+    }
+}
+
+// truthiness
+// all variables are either truthy (they feel like they are true) 
+// OR falsey (they feel like they are false)
+
+if (0) {
+    console.log("yes")
+} else {
+    console.log("no")
+}
+
+// falsey values:
+// 0
+// NaN
+// undefined
+// null
+// ""
+// false
+
+// some seemingly empty values are actually truthy:
+// []
+// {}
+// " "
+
+// when defining things with no value use `null` instead of `undefined`
+const thingThatDoesNotExist = null
+
+
+// DOM MANIPULATION
+
+// DOM - document object model
+
+// DOM is on the page
+// HTML is the blueprint to build the DOM
+
+// QUERYSELECTOR & QUERYSELECTORALL
+
+// uses the same selection syntax as css
+
+// find an element by its tag name
+document.querySelector("img")
+
+// find an element by its id 
+document.querySelector("#contact-form")
+
+// find an element by its class
+const textGreen = document.querySelector(".text-green")
+
+// querySelector gets the first element it finds
+
+// querySelectorAll gets every element it finds
+
+const allTextGreen = document.querySelectorAll(".text-green")
+
+
+// CHANGE ELEMENT ATTRIBUTES
+
+let allPTags = document.querySelectorAll("#sandbox p")
+const secondPTag = allPTags[1]
+
+secondPTag.textContent = "Regal cat incoming below"
+
+secondPTag.style.color = "yellow"
+secondPTag.style.backgroundColor = "black"
+
+// CHANGING IMAGES
+
+const catImage = document.querySelector("#sandbox img")
+
+catImage.src = "https://upload.wikimedia.org/wikipedia/commons/4/4c/Blackcat-Lilith.jpg"
+
+catImage.alt = "black cat"
+
+
+// ADDING / REMOVING CLASSES TO ELEMENTS
+
+textGreen.classList
+// [ "text-green", "bg-yellow" ]
+textGreen.classList.remove("bg-yellow")
+// [ "text-green" ] --> now no longer has bg-yellow
+textGreen.classList.add("bg-yellow")
+// [ "text-green", "bg-yellow" ] --> added the class to the element
+
+
+// REMOVING ELEMENTS
+
+allPTags = document.querySelectorAll("#sandbox p")
+const pTagToRemove = allPTags[2]
+pTagToRemove.remove()
+
+// once we have found an element we may .remove() it to take it off the page
+
+
+// CREATING NEW ELEMENTS
+
+function addNewListItem( text ) {
+    // 1. Create the element so it exists
+    const li = document.createElement("li")
+
+    // 2. Change the element's attributes
+    li.textContent = text
+
+    // 3. Place the element somewhere
+    const ul = document.querySelector("#sandbox ul")
+    ul.append( li )
+}
+
+
+// DOM EVENTS
+
+const meowButton = document.querySelector("#sandbox button")
+
+meowButton.addEventListener( "click", () => alert("meow see, meow") )
+// element.addEventListener("event flavor", callbackFunction)
+
+// get element
+const checkMeBox = document.querySelector("#check-me-box")
+
+// CAT URLS
+const loafCatURL = "https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg"
+const blackCatURL = "https://upload.wikimedia.org/wikipedia/commons/4/4c/Blackcat-Lilith.jpg"
+
+// listen for the when the checkbox "changes"
+// what that means is when the checkbox gets checked or unchecked
+checkMeBox.addEventListener( "change", toggleCatImage )
+
+// callback that triggers when the "change" occurs
+function toggleCatImage() {
+    // check whether it's checked or not
+    if (checkMeBox.checked) {
+        catImage.src = loafCatURL
+        catImage.alt = "loaf cat"
+    } else {
+        catImage.src = blackCatURL
+        catImage.alt = "black cat"
+    }
+    // change src depending on whether it's been checked or unchecked
+}
+
+// CHANGING BACKGROUND IMG WITH A DROPDOWN
+
+const sphynxImg = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sphynx_-_cat._img_031.jpg/960px-Sphynx_-_cat._img_031.jpg"
+
+const maineCImg = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/M%C3%A2le_Black_Silver_Blotched_Tabby.jpeg/250px-M%C3%A2le_Black_Silver_Blotched_Tabby.jpeg"
+
+const persianImg = "https://moderncat.com/wp-content/uploads/2025/03/ss_2510990453_Akifyeva-S-1-940x640.jpg"
+
+// get the dropdown
+const bgCatDropdown = document.querySelector("#bg-cat-dropdown")
+
+// put cat images into an object
+const catImagesObject = {
+    persian: persianImg,
+    "maine-coon": maineCImg,
+    sphynx: sphynxImg
+}
+// if a key has an illegal character like a hyphen we can make it a string and it becomes a valid key
+
+// attach callback that changes the image
+bgCatDropdown.addEventListener( "change", () => {
+    // get the value from the select tag
+    // the value changes depending on what's been selected
+    const catValue = bgCatDropdown.value
+    // based on the catValue ("persian", "maine-coon", "sphynx")...
+    // access the catImagesObject and get the corresponding img
+    // this is using [bracket] notation
+    const chosenImage = catImagesObject[ catValue ]
+    // find sandbox and change image
+    const sandbox = document.querySelector("#sandbox")
+    sandbox.style.backgroundImage = `url(${chosenImage})`
+})
+
+
+// SUBMIT EVENT
+
+const contactForm = document.querySelector("#contact-form")
+const emailInput = document.querySelector("#email-input")
+
+contactForm.addEventListener("submit", handleContactForm)
+
+// the event is what that triggered
+function handleContactForm( event ) {
+    // by default a form will go somewhere or refresh the page
+    // preventDefault makes it so we don't do normal `submit` functionality
+    event.preventDefault()
+    // to get user input we target the input.value
+    const email = emailInput.value
+    // once we have a value we do something with it
+    alert( email )
+}
