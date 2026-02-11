@@ -53,6 +53,324 @@
         
     </section>
 
+    <section id="strings">
+
+        <h2>Strings</h2>
+
+        <p>Strings are:</p>
+
+        <ul>
+            <li>...characters wrapped in quotes</li>
+            <li>...for storing text</li>
+        </ul>
+
+        <code>
+            const newString = "I am a string 123 !@#$%^&*"
+            <br>
+            const emptyString = ""
+            <br>
+            const notEmptyString = "       "
+            <br>
+            const singleQuoteString = 'I am using single quotation'
+            <br>
+            const backtickString = `I am declared using backticks`
+        </code>
+
+        <p>String interpolation allows us to plug values into the string but only works with backticks:</p>
+
+        <code>
+            const interpolatedThing1 = "Hello"
+            <br>
+            const interpolatedThing2 = "World"
+            <br><br>            
+            const usingStringInterpolation = `My interpolated string: ${interpolatedThing1} ${interpolatedThing2}`
+        </code>
+
+        <p>Concatenated strings are strings that have been "added" together with a <span class="inline-code">+</span></p>
+
+        <code>
+            const concatenatedString = "My concatenated string: " + interpolatedThing1 + " " + interpolatedThing2
+        </code>
+
+        <p>A few string methods...</p>
+
+        <p>To uppercase and to lowercase:</p>
+
+        <code>
+            const uppercaseMe = "make me uppercase"
+            <br>
+            const uppercase = uppercaseMe.toUpperCase()
+            <br>
+            // "MAKE ME UPPERCASE"
+            <br><br>
+            const lowercaseMe = "MAKE ME LOWERCASE"
+            <br>
+            const lowercased = lowercaseMe.toLowerCase()
+            <br>
+            // "make me lowercase"
+        </code>
+
+        <p>The <span class="inline-code">.split()</span> method will chop a string into a an array:</p>
+
+        <code>
+            const splitMe = "split me into an array"
+            <br>
+            const split = splitMe.split(" ") 
+            <br>
+            // [ "split", "me", "into", "an", "array" ]
+        </code>
+
+        <p>The <span class="inline-code">.join()</span> method will push an array back together into a string:</p>
+
+        <code>
+            split.join(" ") 
+            <br>
+            // "split me into an array" 
+        </code>
+
+        <p>The <span class="inline-code">.slice()</span> method will return a smaller part of the string:</p>
+
+        <code>
+            const sliceMe = "slice me up"
+            <br>
+            sliceMe.slice(6, 8) // "me"
+            <br>
+            // allows us to grab a smaller part of the string based on a starting and ending point (the 7th letter to the 9th letter)
+        </code>
+
+    </section>
+
+    <section id="numbers">
+
+        <h2>Numbers</h2>
+
+        <p>Te modulo operator <span id="inline-code">%</span> returns the remainder of a division operation</p>
+
+        <code>
+            5 % 4 // >> 1
+            <br>
+            5 % 3 // >> 2
+            <br>
+            5 % 2 // >> 1
+        </code>
+
+        <p>If something is cleanly divisible the remainder is <span class="inline-code">0</span> which is helpful for determining even numbers:</p>
+
+        <code>
+            6 % 2 // >> 0 
+            <br>
+            7 % 2 // >> 1
+        </code>
+
+        <p><span>Math</span> can be used in order to round up, round down, or get a random number between <span>0</span> and <span>1</span>:</p>
+
+        <code>
+            Math.ceil(1.1) // 2
+            <br>
+            Math.floor(1.1) // 1
+            <br><br>
+            Math.random()
+            <br>
+            // 0.5051910743347165
+            <br><br>
+            Math.random()
+            <br>
+            // 0.04570057058789023 
+            <br><br>
+            Math.random()
+            <br>
+            // 0.45876204163942524 
+        </code>
+
+        <p>These can be combined to get a random index for an array:</p>
+
+        <code>
+            function getRandomIndex( array ) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            return Math.floor( Math.random() * array.length )
+            <br>
+            }
+        </code>
+
+    </section>
+
+    <section id="functions">
+
+        <h2>Functions</h2>
+
+        <p>Functions are:</p>
+
+        <ul>
+            <li>...a group of reusable code that executes a desired task at a specific time</li>
+            <li>...a standard operation that can be applied to different variables</li>
+        </ul>
+
+        <p>The function below has been declared with the name <span class="inline-code">doSomething</span> and accepts three arguments:</p>
+
+        <code>
+            function doSomething(thing1, thing2, thing3) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            return `${thing1} and ${thing2} and ${thing3}`
+            <br>
+            }
+        </code>
+
+        <p>A parameter is the variable name, for example <span class="inline-code">thing1</span> and <span class="inline-code">thing2</span> and <span class="inline-code">thing3</span>. You use the name parameter when you are declaring a function.</p>
+
+        <p>An argument is the value you pass into the function when it's called. Below the arguments are <span class="inline-code">"I am thing 1"</span>, <span class="inline-code">"I am " + "thing 2"</span>, and <span class="inline-code">thing3</span>:</p>
+
+        <code>
+            const thing3 = "I am thing 3"
+            <br><br>
+            doSomething("I am thing 1", "I am " + "thing 2", thing3)
+        </code>
+
+        <p>Parameters are a way to give information to the function. The <span class="inline-code">return</span> is a way to take information out of the function.</p>
+        
+        <code>
+            function giveMeSomething() {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            return "here ya go"
+            <br>
+            }
+            <br><br>
+            const whatIGot = giveMeSomething()
+            <br>
+            // "here ya go"
+        </code>
+
+        <p>With multiple <span class="inline-code">return</span> statements only the first <span class="inline-code">return</span> in the function will work and the others will be ignored:</p>
+
+        <code>
+            function multipleReturns() {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            return "first return"
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            return "second return"
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            return "third return"
+            <br>
+            }
+            <br><br>
+            multipleReturns() // "first return"
+        </code>
+
+        <p>Arrow functions are another way of declaring functions:</p>
+
+        <code>
+            const myArrowFn = (params) => { "the body of the arrow function" }
+            <br><br>
+            // function = (maybe with a parameter) =such=that=> { the body }
+        </code>
+
+        <p>Arrow functions with only one line and no curly brackets <span class="inline-code">{}</span> have an "implicit return" which means they automatically return the result of the function:</p>
+
+        <code>
+            const automaticallyReturn = () => "I get returned automatically or 'implicitly'"
+            <br><br>
+            automaticallyReturn() // "I get returned automatically or 'implicitly'"
+        </code>
+
+        <p>Arrow functions can have very little syntax when they have only one parameter and an implicit return.</p>
+
+        <code>
+            param => "the body of the arrow function"
+        </code>
+
+    </section>
+
+    <section id="objects">
+
+        <h2>JS Objects</h2>
+
+        <p>Objects are data structures - they hold other pieces of information inside of them:</p>
+
+        <code>
+            const someObject = {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            key: "value"
+            <br>
+            }
+        </code>
+
+        <p>Data can be accessed and manipulated in an object:</p>
+
+        <code>
+            const person = {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                name: "Chett",
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                age: 21
+                <br>
+            }
+            <br><br>
+            person.name // "Chett"
+            <br>
+            person.age // 21
+            <br>
+            person.favoriteFood // undefined
+            <br><br>
+            person.name = "Chort"
+            <br>
+            person.age = 100
+            <br>
+            person.favoriteFood = "pizza"
+            <br><br>
+            {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                 name: "Chort",
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                 age: 100,
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                 favoriteFood: "pizza"
+                <br>
+            }
+        </code>
+
+        <p>The above is using dot notation but bracket notation <span class="inline-code">[]</span> is also a way to access and change information:</p>
+
+        <code>
+            person["name"] // "Chort"
+            <br>
+            person["favoriteFood"] // "pizza"
+            <br>
+            person["favoriteFood"] = "hawaiian style pizza"
+            <br><br>
+            {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                name: "Chort",
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                age: 100,
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                favoriteFood: "hawaiian style pizza"
+                <br>
+            }
+        </code>
+
+        <p>Bracket notation can be used to dynamically access key/value pairs like using an index:</p>
+
+        <code>
+            const statePopulation = {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                alaska: 738737,
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                hawaii: 1432820
+                <br>
+            }
+            <br><br>
+            const theStateToGet = "alaska"
+            <br>
+            statePopulation[ theStateToGet ] // 738737
+        </code>
+
+    </section>
+
+    <section id="arrays">
+
+        <h2>Arrays</h2>
+
+    </section>
+
 
 
 

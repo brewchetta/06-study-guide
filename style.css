@@ -22,6 +22,14 @@ img {
     border-radius: 8px;
 }
 
+span.inline-code {
+    background-color: #888;
+    border-radius: 4px;
+    color: white;
+    font-family: monospace;
+    padding: 0.25em;
+}
+
 /* SANDBOX STYLES */
 
 #sandbox {
@@ -37,11 +45,4 @@ img {
 
 .bg-yellow {
     background-color: yellow;
-}
-
-span.inline-code {
-    background-color: #888;
-    border-radius: 4px;
-    color: white;
-    padding: 0.25em;
 }

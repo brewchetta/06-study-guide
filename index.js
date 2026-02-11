@@ -54,7 +54,7 @@ const split = splitMe.split(" ")
 // [ "split", "me", "into", "an", "array" ]
 
 split.join(" ") 
-// takes an array and pushes it together together into a string
+// takes an array and pushes it together into a string
 // "split me into an array" 
 
 const sliceMe = "slice me up"
